@@ -18,6 +18,7 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
     try {
+        console.error("Response: ", req.body);
         const entry = req.body.entry?.[0];
         const changes = entry.changes?.[0];
 
@@ -36,7 +37,7 @@ router.post("/", (req, res) => {
 
         res.status(200).send("EVENT_RECEIVED");
     } catch (e) {
-        console.error(e);
+        console.error("Error:", e);
         res.sendStatus(500);
     }
 });
