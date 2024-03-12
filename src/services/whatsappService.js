@@ -14,20 +14,20 @@ const SendMessageWhatsapp = async (data, messageId, numberId) => {
         console.log(response.data);
 
         // Llamar a SetMessageRead si messageId no es nulo
-        if (messageId !== null) {
-            await SetMessageRead(messageId, numberId);
-        }
+        //if (messageId !== null) {
+          //  await SetMessageRead(messageId, numberId);
+        //}
     } catch (error) {
         console.error(error);
     }
 };
 
 const SetMessageRead = async (messageId, numberId) => {
-    const data = {
-        "messaging_product": "whatsapp",
+    const data = JSON.stringify({
+        "messaging_product": "whatsapp",    
         "status": "read",
         "message_id": messageId
-    };
+    })
 
     const url = `https://graph.facebook.com/v18.0/${numberId}/messages`;
 
